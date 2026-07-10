@@ -7,18 +7,6 @@
   },
   "plugins": [
     {
-      "name": "frameworkpowers",
-      "description": "Core skills library: TDD, debugging, collaboration patterns, and proven techniques — fork do Superpowers com equipping-stack-docs embutida",
-      "source": {
-        "source": "github",
-        "repo": "Framework-System/frameworkpowers"
-      },
-      "author": {
-        "name": "Framework System",
-        "email": "rafaelbonaldi@frwk.com.br"
-      }
-    },
-    {
       "name": "equipping-stack-docs",
       "description": "Generates project-local documentation skills with version-pinned docs via Context7 - covers new stacks and legacy codebases",
       "source": {

@@ -11,7 +11,6 @@ Marketplace central de plugins Claude Code da **Framework System**. Registre uma
 Depois instale o que precisar:
 
 ```
-/plugin install frameworkpowers@frwk-plugins
 /plugin install equipping-stack-docs@frwk-plugins
 ```
 
@@ -19,10 +18,7 @@ Depois instale o que precisar:
 
 | Plugin | O que faz | Repositório |
 |---|---|---|
-| **frameworkpowers** | Biblioteca completa de skills de engenharia (fork do Superpowers): brainstorming, planos, TDD, debugging, subagentes, code review — com a equipping-stack-docs embutida no fluxo | [Framework-System/frameworkpowers](https://github.com/Framework-System/frameworkpowers) |
-| **equipping-stack-docs** | Standalone: gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
-
-> **Atenção:** não instale os dois juntos — o frameworkpowers já embute a equipping-stack-docs. Escolha o fork completo OU o Superpowers oficial + o plugin standalone.
+| **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 — desenhado para conviver com o [Superpowers](https://github.com/obra/superpowers) oficial | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
 
 ## Adicionando um plugin novo
 
