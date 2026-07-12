@@ -18,7 +18,7 @@ Depois instale o que precisar:
 
 | Plugin | O que faz | Repositório |
 |---|---|---|
-| **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 — desenhado para conviver com o [Superpowers](https://github.com/obra/superpowers) oficial | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
+| **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
 
 ## Adicionando um plugin novo
 
