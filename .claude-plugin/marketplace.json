@@ -10,8 +10,8 @@
       "name": "equipping-stack-docs",
       "description": "Generates project-local documentation skills with version-pinned docs via Context7 - covers new stacks and legacy codebases",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/equipping-stack-docs"
+        "source": "git",
+        "url": "https://github.com/Framework-System/equipping-stack-docs.git"
       },
       "author": {
         "name": "Framework System",
