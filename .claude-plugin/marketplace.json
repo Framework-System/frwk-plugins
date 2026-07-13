@@ -17,6 +17,39 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "oskiller",
+      "description": "Migração guiada de apps OutSystems para uma arquitetura/stack de destino definida pelo usuário. Executa um passo a passo em fases: análise → blueprint/plano → geração de código → verificação.",
+      "source": {
+        "source": "github",
+        "repo": "felipehorta/OSKiller"
+      },
+      "author": {
+        "name": "Felipe Horta"
+      }
+    },
+    {
+      "name": "neverstop",
+      "description": "Faz uma sessão de codegen (oskiller:execute) sobreviver ao estouro da janela de contexto: salva o estado num handoff MD padrão antes do limite e recarrega automaticamente após /clear.",
+      "source": {
+        "source": "github",
+        "repo": "felipehorta/NeverStop"
+      },
+      "author": {
+        "name": "Felipe Horta"
+      }
+    },
+    {
+      "name": "estimativa-killer",
+      "description": "Estima o esforço combinado agente (oskiller) + humano para levar uma migração OutSystems da construção ao deploy em produção. Roda após /oskiller:plan e produz um cronograma de calendário por onda em plan/ESTIMATIVA.md.",
+      "source": {
+        "source": "github",
+        "repo": "felipehorta/EstimativaKiller"
+      },
+      "author": {
+        "name": "Felipe Horta"
+      }
     }
   ]
 }
