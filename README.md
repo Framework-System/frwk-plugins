@@ -17,19 +17,21 @@ Depois instale o que precisar:
 /plugin install estimativa-killer@frwk-plugins
 ```
 
-> **Repos privados + clone SSH:** se a instalação falhar com `Permission denied (publickey)`, seu git está tentando SSH sem chave configurada. Ou configure uma chave SSH no GitHub, ou redirecione para HTTPS autenticado (via `gh auth login`) com:
+## Plugins disponíveis
+
+| Plugin | O que faz | Acesso | Repositório |
+|---|---|---|---|
+| **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | Público | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
+| **oskiller** | Migração guiada de apps OutSystems para a stack de destino, em fases: análise → blueprint/plano → geração de código → verificação | Restrito | [felipehorta/OSKiller](https://github.com/felipehorta/OSKiller) |
+| **neverstop** | Faz sessões longas de codegen (oskiller:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | Restrito | [felipehorta/NeverStop](https://github.com/felipehorta/NeverStop) |
+| **estimativa-killer** | Estima o esforço agente + humano de uma migração OutSystems até produção; roda após /oskiller:plan e gera cronograma por onda | Restrito | [felipehorta/EstimativaKiller](https://github.com/felipehorta/EstimativaKiller) |
+
+**Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
+
+> **Dica (clone SSH sem chave):** se a instalação de um plugin restrito falhar com `Permission denied (publickey)`, redirecione o git para HTTPS autenticado:
 > ```
 > git config --global url."https://github.com/".insteadOf "git@github.com:"
 > ```
-
-## Plugins disponíveis
-
-| Plugin | O que faz | Repositório |
-|---|---|---|
-| **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
-| **oskiller** | Migração guiada de apps OutSystems para a stack de destino, em fases: análise → blueprint/plano → geração de código → verificação | [felipehorta/OSKiller](https://github.com/felipehorta/OSKiller) |
-| **neverstop** | Faz sessões longas de codegen (oskiller:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | [felipehorta/NeverStop](https://github.com/felipehorta/NeverStop) |
-| **estimativa-killer** | Estima o esforço agente + humano de uma migração OutSystems até produção; roda após /oskiller:plan e gera cronograma por onda | [felipehorta/EstimativaKiller](https://github.com/felipehorta/EstimativaKiller) |
 
 ## Adicionando um plugin novo
 
