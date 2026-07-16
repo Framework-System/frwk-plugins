@@ -19,6 +19,18 @@
       }
     },
     {
+      "name": "legacy-docs",
+      "description": "Deep, evidence-grounded documentation for legacy codebases: 5-phase pipeline with hot-spot triage, Grounding Contract and adversarial verification (Legacy Documentation Kit v4)",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/legacy-documentation-kit"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
+    },
+    {
       "name": "oskiller",
       "description": "Migração guiada de apps OutSystems para uma arquitetura/stack de destino definida pelo usuário. Executa um passo a passo em fases: análise → blueprint/plano → geração de código → verificação.",
       "source": {
