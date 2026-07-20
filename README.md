@@ -13,6 +13,7 @@ Depois instale o que precisar:
 ```
 /plugin install equipping-stack-docs@frwk-plugins
 /plugin install legacy-docs@frwk-plugins
+/plugin install qa-handoff@frwk-plugins
 /plugin install oskiller@frwk-plugins
 /plugin install neverstop@frwk-plugins
 /plugin install estimativa-killer@frwk-plugins
@@ -24,6 +25,7 @@ Depois instale o que precisar:
 |---|---|---|---|
 | **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | Público | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
 | **legacy-docs** | Documentação profunda e verificada de sistemas legados: pipeline de 5 fases com triage de hot-spots e verificação adversarial (`/legacy-docs:document`) | Restrito | [Framework-System/legacy-documentation-kit](https://github.com/Framework-System/legacy-documentation-kit) |
+| **qa-handoff** | Mantém artefatos de QA ao fim de cada demanda: cenários grounded no código, massa de dados, regressão e matriz de cobertura, com validação em browser e evidência gravada (`/qa-handoff:update`) | Restrito | [Framework-System/qa-handoff](https://github.com/Framework-System/qa-handoff) |
 | **oskiller** | Migração guiada de apps OutSystems para a stack de destino, em fases: análise → blueprint/plano → geração de código → verificação | Restrito | [felipehorta/OSKiller](https://github.com/felipehorta/OSKiller) |
 | **neverstop** | Faz sessões longas de codegen (oskiller:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | Restrito | [felipehorta/NeverStop](https://github.com/felipehorta/NeverStop) |
 | **estimativa-killer** | Estima o esforço agente + humano de uma migração OutSystems até produção; roda após /oskiller:plan e gera cronograma por onda | Restrito | [felipehorta/EstimativaKiller](https://github.com/felipehorta/EstimativaKiller) |

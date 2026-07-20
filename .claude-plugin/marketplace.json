@@ -31,6 +31,18 @@
       }
     },
     {
+      "name": "qa-handoff",
+      "description": "Keeps QA-ready artifacts current at the end of every implementation: code-grounded test scenarios, test data, regression map and coverage matrix in the project's qaHandoff/ directory, with real-browser validation and recorded evidence",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/qa-handoff"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
+    },
+    {
       "name": "oskiller",
       "description": "Migração guiada de apps OutSystems para uma arquitetura/stack de destino definida pelo usuário. Executa um passo a passo em fases: análise → blueprint/plano → geração de código → verificação.",
       "source": {
