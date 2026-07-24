@@ -74,6 +74,18 @@
       "author": {
         "name": "Felipe Horta"
       }
+    },
+    {
+      "name": "discovery-sync",
+      "description": "Transforma artefatos brutos de um cliente (proposta, atas, transcrições, chat, PDFs) numa pasta local ou no Google Drive em um Discovery Document aprovado e um backlog Épico→Feature→User Story pronto para desenvolvimento, com sugestão de integração a Azure DevOps e afins.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/discovery-sync"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }
