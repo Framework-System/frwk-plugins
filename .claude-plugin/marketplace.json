@@ -86,6 +86,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "flow-genesis-studio",
+      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync (ou de texto livre, prints, link de Figma), com handoff Figma opcional.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/flow-genesis-studio"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }

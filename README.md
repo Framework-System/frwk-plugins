@@ -18,6 +18,7 @@ Depois instale o que precisar:
 /plugin install neverstop@frwk-plugins
 /plugin install estimativa-killer@frwk-plugins
 /plugin install discovery-sync@frwk-plugins
+/plugin install flow-genesis-studio@frwk-plugins
 ```
 
 ## Plugins disponíveis
@@ -31,6 +32,7 @@ Depois instale o que precisar:
 | **neverstop** | Faz sessões longas de codegen (oskiller:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | Restrito | [felipehorta/NeverStop](https://github.com/felipehorta/NeverStop) |
 | **estimativa-killer** | Estima o esforço agente + humano de uma migração OutSystems até produção; roda após /oskiller:plan e gera cronograma por onda | Restrito | [felipehorta/EstimativaKiller](https://github.com/felipehorta/EstimativaKiller) |
 | **discovery-sync** | Do artefato bruto do cliente ao backlog pronto para dev: inventário, quiz adaptativo, Discovery Document com gate de aprovação, Epic/Feature/User Story rastreável e integração com Azure DevOps e afins (`/discovery-sync:start`) | Restrito | [Framework-System/discovery-sync](https://github.com/Framework-System/discovery-sync) |
+| **flow-genesis-studio** | Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync (ou de texto livre, prints, link de Figma): blueprint com gate de aprovação, telas HTML clicáveis com craft via interface-design, verificação adversarial de rastreabilidade/anti-slop, e handoff Figma opcional (`/flow-genesis-studio:start`) | Restrito | [Framework-System/flow-genesis-studio](https://github.com/Framework-System/flow-genesis-studio) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 
