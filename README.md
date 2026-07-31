@@ -20,6 +20,7 @@ Depois instale o que precisar:
 /plugin install discovery-sync@frwk-plugins
 /plugin install screendiscovery@frwk-plugins
 /plugin install flow-genesis-studio@frwk-plugins
+/plugin install glow-up@frwk-plugins
 ```
 
 ## Plugins disponíveis
@@ -35,6 +36,7 @@ Depois instale o que precisar:
 | **discovery-sync** | Do artefato bruto do cliente ao backlog pronto para dev: inventário, quiz adaptativo, Discovery Document com gate de aprovação, Epic/Feature/User Story rastreável e integração com Azure DevOps e afins (`/discovery-sync:start`) | Restrito | [Framework-System/discovery-sync](https://github.com/Framework-System/discovery-sync) |
 | **screendiscovery** | Mapeia exaustivamente uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — entregando screenshots numerados e um `mapeamento_aplicacao.md` que referencia cada imagem (`/screendiscovery:mapear`) | Restrito | [Framework-System/ScreenDiscovery](https://github.com/Framework-System/ScreenDiscovery) |
 | **flow-genesis-studio** | Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync (ou de texto livre, prints, link de Figma): blueprint com gate de aprovação, telas HTML clicáveis com craft via interface-design, verificação adversarial de rastreabilidade/anti-slop, e handoff Figma opcional (`/flow-genesis-studio:start`) | Restrito | [Framework-System/flow-genesis-studio](https://github.com/Framework-System/flow-genesis-studio) |
+| **glow-up** | Repagina a estética de um sistema que **já existe e roda**: lê as telas (via screendiscovery) e a camada estética do código, alinha a direção num quiz, propõe 3 direções para escolher, e entrega styleguide vivo, antes/depois navegável e o custo real de aplicar no código — com paridade funcional verificada tela a tela (`/glow-up:start`) | Restrito | [Framework-System/glow-up](https://github.com/Framework-System/glow-up) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 
