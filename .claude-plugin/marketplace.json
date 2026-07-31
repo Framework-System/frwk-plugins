@@ -98,6 +98,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "screendiscovery",
+      "description": "Mapeia de forma exaustiva uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — e entrega uma pasta com screenshots numerados e um mapeamento_aplicacao.md que referencia cada imagem.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/ScreenDiscovery"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }
