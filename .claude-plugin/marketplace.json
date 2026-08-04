@@ -89,7 +89,7 @@
     },
     {
       "name": "flow-genesis-studio",
-      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync (ou de texto livre, prints, link de Figma), com handoff Figma opcional.",
+      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe — arquivo do Figma via MCP oficial, prints, ou HTML/mockup — herdando dele paleta, tipografia e telas já desenhadas. Verifica cada tela, revisa o protótipo inteiro, e exporta pro Figma pelo MCP ou via code.to.design.",
       "source": {
         "source": "github",
         "repo": "Framework-System/flow-genesis-studio"
