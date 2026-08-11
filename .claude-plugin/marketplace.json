@@ -112,7 +112,7 @@
       }
     },
     {
-      "name": "DriveTranscriberMCP",
+      "name": "drive-transcriber-mcp",
       "description": "Servidor MCP que le audios/videos de uma pasta do Google Drive, transcreve localmente (faster-whisper, offline, sem custo de API) e sincroniza .txt/.srt de volta para o Drive.",
       "source": {
         "source": "github",
