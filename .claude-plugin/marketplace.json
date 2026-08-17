@@ -124,6 +124,18 @@
       }
     },
     {
+      "name": "drive-transcriber-mcp",
+      "description": "Servidor MCP que lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente (faster-whisper, offline, sem custo de API) e sincroniza .txt/.srt de volta para o Drive.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/DriveTranscriberMCP"
+      },
+      "author": {
+        "name": "Douglas Everton de Oliveira",
+        "email": "douglasoliveira@frwk.com.br"
+      }
+    },
+    {
       "name": "qa-intake",
       "description": "Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto.",
       "source": {

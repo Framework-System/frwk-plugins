@@ -21,6 +21,7 @@ Depois instale o que precisar:
 /plugin install screendiscovery@frwk-plugins
 /plugin install flow-genesis-studio@frwk-plugins
 /plugin install glow-up@frwk-plugins
+/plugin install drive-transcriber-mcp@frwk-plugins
 /plugin install qa-intake@frwk-plugins
 ```
 
@@ -38,6 +39,7 @@ Depois instale o que precisar:
 | **screendiscovery** | Mapeia exaustivamente uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — entregando screenshots numerados e um `mapeamento_aplicacao.md` que referencia cada imagem (`/screendiscovery:mapear`) | Restrito | [Framework-System/ScreenDiscovery](https://github.com/Framework-System/ScreenDiscovery) |
 | **flow-genesis-studio** | Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync (ou de texto livre, prints, link de Figma): blueprint com gate de aprovação, telas HTML clicáveis com craft via interface-design, verificação adversarial de rastreabilidade/anti-slop, e handoff Figma opcional (`/flow-genesis-studio:start`) | Restrito | [Framework-System/flow-genesis-studio](https://github.com/Framework-System/flow-genesis-studio) |
 | **glow-up** | Repagina a estética de um sistema que **já existe e roda**: lê as telas (via screendiscovery) e a camada estética do código, alinha a direção num quiz, propõe 3 direções para escolher, e entrega styleguide vivo, antes/depois navegável e o custo real de aplicar no código — com paridade funcional verificada tela a tela (`/glow-up:start`) | Restrito | [Framework-System/glow-up](https://github.com/Framework-System/glow-up) |
+| **drive-transcriber-mcp** | Servidor MCP: lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente com faster-whisper (offline, sem custo de API) e sincroniza `.txt`/`.srt` de volta para o Drive | Restrito | [Framework-System/DriveTranscriberMCP](https://github.com/Framework-System/DriveTranscriberMCP) |
 | **qa-intake** | Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto (`/qa-intake:start`) | Restrito | [Framework-System/qa-intake](https://github.com/Framework-System/qa-intake) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
