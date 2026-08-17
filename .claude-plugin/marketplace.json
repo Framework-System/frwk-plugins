@@ -134,6 +134,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "qa-intake",
+      "description": "Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/qa-intake"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }
