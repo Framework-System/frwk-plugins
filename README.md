@@ -23,6 +23,7 @@ Depois instale o que precisar:
 /plugin install glow-up@frwk-plugins
 /plugin install drive-transcriber-mcp@frwk-plugins
 /plugin install qa-intake@frwk-plugins
+/plugin install selfrepair@frwk-plugins
 ```
 
 ## Plugins disponíveis
@@ -41,6 +42,7 @@ Depois instale o que precisar:
 | **glow-up** | Repagina a estética de um sistema que **já existe e roda**: lê as telas (via screendiscovery) e a camada estética do código, alinha a direção num quiz, propõe 3 direções para escolher, e entrega styleguide vivo, antes/depois navegável e o custo real de aplicar no código — com paridade funcional verificada tela a tela (`/glow-up:start`) | Restrito | [Framework-System/glow-up](https://github.com/Framework-System/glow-up) |
 | **drive-transcriber-mcp** | Servidor MCP: lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente com faster-whisper (offline, sem custo de API) e sincroniza `.txt`/`.srt` de volta para o Drive | Restrito | [Framework-System/DriveTranscriberMCP](https://github.com/Framework-System/DriveTranscriberMCP) |
 | **qa-intake** | Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto (`/qa-intake:start`) | Restrito | [Framework-System/qa-intake](https://github.com/Framework-System/qa-intake) |
+| **selfrepair** | Auto-reparador de bugs de produção: descobre bugs na telemetria que o projeto já usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP; arquivo de log, saída de container e painel web como fallback), agrupa cross-fonte e ranqueia com decomposição explícita do score, investiga cada bug em paralelo, **conversa com você na busca e na correção**, corrige com teste de regressão vermelho antes do fix e verificação adversarial, e registra em branch dedicada com commits atômicos e PR sob confirmação por degrau (`/selfrepair:start`) | Restrito | [Framework-System/selfrepair](https://github.com/Framework-System/selfrepair) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 

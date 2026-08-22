@@ -146,6 +146,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "selfrepair",
+      "description": "Auto-reparador de bugs de producao: descobre bugs na telemetria que o projeto ja usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP, ou arquivo de log, saida de container e painel web como fallback), agrupa cross-fonte e ranqueia com explicacao, investiga cada bug em paralelo, conversa com voce na busca e na correcao, corrige com teste de regressao vermelho antes do fix e verificacao adversarial, e registra em branch dedicada com commits atomicos e pull request sob confirmacao explicita por degrau.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/selfrepair"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }
