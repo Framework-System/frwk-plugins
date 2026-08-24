@@ -66,7 +66,9 @@ Entrega completa: skills, comandos, subagentes e hooks.
 
 ### GitHub Copilot CLI
 
-O Copilot CLI lê o mesmo `marketplace.json`.
+O Copilot CLI lê o mesmo `marketplace.json` deste repositório. **Testado com o Copilot CLI 1.0.80**:
+o marketplace é aceito, os 12 plugins aparecem no `browse`, e a instalação resolve o `source` no
+formato `github/repo` sem ajuste nenhum.
 
 - Registre o marketplace:
 
@@ -160,6 +162,30 @@ caminhos mais comuns são `.agents/skills/` (no repositório) e `~/.agents/skill
 
 **Demais agentes = sim** significa que o repositório traz os manifestos de Codex, Cursor, Kimi,
 Gemini e pi, todos apontando para a mesma skill — sem cópia duplicada.
+
+### O que o Copilot CLI faz a mais — e o cuidado que isso exige
+
+O Copilot CLI não carrega só a skill: ele também importa os arquivos de `commands/` **como skills
+soltas, sem o prefixo do plugin**. Um `/discovery-sync:quiz` vira uma skill chamada `quiz`.
+
+Isso é bom (mais do plugin chega ao Copilot) e é um problema quando você instala vários plugins
+nossos, porque **os nomes colidem em silêncio**:
+
+| Nome disputado | Plugins que o usam |
+|---|---|
+| `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, oskiller, qa-intake |
+| `start` | discovery-sync, selfrepair, flow-genesis-studio, oskiller, qa-intake |
+| `ingest` | discovery-sync, qa-intake |
+| `review` | discovery-sync, flow-genesis-studio |
+| `verify` | flow-genesis-studio, oskiller |
+
+Medido com os 9 plugins instalados: **58 componentes viram 46 nomes únicos — 12 ficam
+inacessíveis**, sem aviso. Quem pedir "status" recebe o do discovery-sync, qualquer que fosse a
+intenção.
+
+No Claude Code isso não acontece: lá cada comando é prefixado pelo plugin (`/oskiller:status` e
+`/qa-intake:status` coexistem). **Se for usar o Copilot CLI, instale só os plugins que você
+realmente precisa.**
 
 Os três com **—**:
 
