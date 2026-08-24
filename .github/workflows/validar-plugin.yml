@@ -1,0 +1,78 @@
+name: Validar plugin
+
+# Workflow reutilizável: cada repositório de plugin chama este, em vez de manter uma cópia do
+# validador. Um lugar só para corrigir uma regra — mesmo princípio do `./skills/` único que os
+# manifestos multi-harness compartilham.
+#
+# Para usar, crie no repositório do plugin `.github/workflows/validar.yml`:
+#
+#   name: Validar
+#   on:
+#     pull_request:
+#     push:
+#       branches: [main, master]
+#   jobs:
+#     validar:
+#       uses: Framework-System/frwk-plugins/.github/workflows/validar-plugin.yml@main
+
+on:
+  workflow_call:
+    inputs:
+      base:
+        description: >-
+          Ref para comparar e cobrar o bump de versão. Em pull_request o padrão é a branch de
+          destino; em push, o commit anterior.
+        required: false
+        type: string
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do plugin
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # o validador precisa do histórico para comparar com a base
+
+      - name: Checkout do validador
+        uses: actions/checkout@v4
+        with:
+          repository: Framework-System/frwk-plugins
+          path: .frwk-validador
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Resolver a ref de comparação
+        id: base
+        run: |
+          if [ -n "${{ inputs.base }}" ]; then
+            echo "ref=${{ inputs.base }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "ref=origin/${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Regras da loja
+        run: |
+          python3 .frwk-validador/scripts/validar-plugin.py \
+            --repo . --base "${{ steps.base.outputs.ref }}"
+
+      - name: Validador oficial da spec Agent Skills
+        run: |
+          if [ ! -d skills ]; then
+            echo "sem diretório skills/ — nada a validar contra a spec"
+            exit 0
+          fi
+          git clone --depth 1 -q https://github.com/agentskills/agentskills.git /tmp/agentskills
+          python3 -m venv /tmp/venv
+          /tmp/venv/bin/pip install -q /tmp/agentskills/skills-ref
+          falhou=0
+          for sk in skills/*/; do
+            [ -f "$sk/SKILL.md" ] || continue
+            /tmp/venv/bin/skills-ref validate "$sk" || falhou=1
+          done
+          exit $falhou

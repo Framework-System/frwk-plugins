@@ -34,9 +34,10 @@ você descreve o que quer e o agente carrega a skill pela descrição dela.
 
 A instalação muda conforme o agente. Se você usa mais de um, instale em cada um separadamente.
 
-> **Repositórios privados.** Todos os repos são privados. Qualquer comando abaixo exige que você já
-> esteja autenticado no GitHub (`gh auth login`, credential helper ou chave SSH no `ssh-agent`).
-> Sem isso o download falha com erro de autenticação.
+> **A maioria dos repositórios é privada.** Este repositório da loja e o `equipping-stack-docs` são
+> públicos; os outros 11 plugins são privados. Qualquer comando que baixe um plugin privado exige que
+> você já esteja autenticado no GitHub (`gh auth login`, credential helper ou chave SSH no
+> `ssh-agent`). Sem isso o download falha com erro de autenticação, não de "não encontrado".
 
 ### Claude Code
 
@@ -271,8 +272,8 @@ Os três com **—**:
 ```
 
 > **Rode o primeiro comando manualmente.** O auto-update em background desabilita os credential
-> helpers do git, então **não autentica em repositório privado por HTTPS** — que é o caso de todos
-> estes. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
+> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 11 dos 12
+> plugins. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
 > registre o marketplace por SSH, com a chave carregada no `ssh-agent`.
 
 O cache de plugin é indexado pela string de `version`. Todo release muda a versão nos manifests;
@@ -305,7 +306,9 @@ sem isso a atualização não chega em quem já instalou.
 
 ## Acesso
 
-Todos os repositórios são privados. O acesso vem por time, não por pertencer à org:
+Este repositório da loja e o `equipping-stack-docs` são **públicos** — o catálogo, com o nome e a
+descrição de todos os plugins, é legível por qualquer pessoa. Os outros 11 repositórios são
+**privados**, e o acesso a eles vem por time, não por pertencer à org:
 
 | Time | Permissão |
 |---|---|
