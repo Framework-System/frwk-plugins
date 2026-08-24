@@ -32,7 +32,7 @@
     },
     {
       "name": "qa-handoff",
-      "description": "Keeps QA-ready artifacts current at the end of every implementation: code-grounded test scenarios, test data, regression map and coverage matrix in the project's qaHandoff/ directory, with real-browser validation and recorded evidence",
+      "description": "Keeps QA-ready artifacts current at the end of every implementation: code-grounded test scenarios, test data, regression map and coverage matrix in the project's docs/qaHandoff/ directory, with real-browser validation and recorded evidence",
       "source": {
         "source": "github",
         "repo": "Framework-System/qa-handoff"
@@ -44,7 +44,7 @@
     },
     {
       "name": "oskiller",
-      "description": "Migração guiada de apps OutSystems para uma arquitetura/stack de destino definida pelo usuário. Executa um passo a passo em fases: análise → blueprint/plano → geração de código → verificação.",
+      "description": "Migração guiada de uma stack de origem para uma arquitetura/stack de destino definida pelo usuário. Oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras de negócio RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos.",
       "source": {
         "source": "github",
         "repo": "felipehorta/OSKiller"
@@ -89,7 +89,7 @@
     },
     {
       "name": "flow-genesis-studio",
-      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe — arquivo do Figma via MCP oficial, prints, ou HTML/mockup — herdando dele paleta, tipografia e telas já desenhadas. Verifica cada tela, revisa o protótipo inteiro, e exporta pro Figma pelo MCP ou via code.to.design.",
+      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe — arquivo do Figma via MCP oficial, prints, ou HTML/mockup — herdando dele paleta, tipografia e telas já desenhadas em vez de inventar do zero. Craft real via interface-design (invocação obrigatória) e responsividade garantida em toda tela. Audita e corrige cada tela em paralelo, uma célula por tela, com a comparação visual contra o original dentro dela, e fecha com uma passada de escopo cruzado; acima de 25 telas entrega em ondas, com validação sua entre elas. Entrega HTML clicável sempre, tour guiado opcional (Driver.js), e export pro Figma pelo MCP (layers editáveis, sem API key) ou via code.to.design.",
       "source": {
         "source": "github",
         "repo": "Framework-System/flow-genesis-studio"
