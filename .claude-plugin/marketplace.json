@@ -77,7 +77,7 @@
     },
     {
       "name": "discovery-sync",
-      "description": "Transforma artefatos brutos de um cliente (proposta, atas, transcrições, chat, PDFs) numa pasta local ou no Google Drive em um Discovery Document aprovado e um backlog Épico→Feature→User Story pronto para desenvolvimento, com sugestão de integração a Azure DevOps e afins.",
+      "description": "Transforma artefatos brutos de um cliente (proposta, atas, transcrições, chat, PDFs) numa pasta local, no Google Drive ou já formalizados num board Azure DevOps/Jira em um Discovery Document aprovado e um backlog Épico→Feature→User Story pronto para desenvolvimento, com sugestão de integração a Azure DevOps e afins.",
       "source": {
         "source": "github",
         "repo": "Framework-System/discovery-sync"
