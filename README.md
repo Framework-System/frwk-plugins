@@ -144,6 +144,9 @@ chega ao Gemini.
 
 ### Cursor, Kimi, Antigravity, OpenCode, pi
 
+O OpenCode usa `skills` como **objeto com `paths`** no `opencode.json`, não uma lista. O pi instala
+com `pi install git:github.com/Framework-System/<repo>`. Veja o README de cada plugin para o comando exato.
+
 Instalam **por plugin**. Cada repositório traz o manifesto do respectivo harness e a seção
 **Instalação** com o comando exato.
 
@@ -163,19 +166,26 @@ caminhos mais comuns são `.agents/skills/` (no repositório) e `~/.agents/skill
 
 ## Onde isto foi testado de verdade
 
-Nem tudo abaixo é leitura de documentação. Estes três foram instalados e exercitados nesta máquina:
+Nem tudo abaixo é leitura de documentação. Estes foram instalados e exercitados nesta máquina:
 
-| Agente | Versão testada | Resultado |
+| Agente | Versão | Resultado |
 |---|---|---|
-| **GitHub Copilot CLI** | 1.0.80 | marketplace aceito, 12 plugins no `browse`, 9 instalados. Importa `commands/` como skills (ver aviso de colisão abaixo) |
-| **Codex CLI** | 0.149.1 | exigiu `.agents/plugins/marketplace.json`, que foi adicionado. 9 plugins instalados e habilitados |
-| **Gemini CLI** | 0.56.0 | instala de repositório privado; a skill chega via `GEMINI.md`. `agents/` gera ruído de validação |
+| **GitHub Copilot CLI** | 1.0.80 | marketplace aceito, 12 no `browse`, **9 instalados**. Importa `commands/` como skills (ver aviso de colisão) |
+| **Codex CLI** | 0.149.1 | exigiu `.agents/plugins/marketplace.json`, adicionado. **9 instalados e habilitados** |
+| **Gemini CLI** | 0.56.0 | instala de repositório privado; skill entregue via `GEMINI.md`. `agents/` gera ruído de validação |
+| **OpenCode** | 1.18.21 | **3 skills carregadas** via `skills.paths`. Também lê `~/.claude/skills` sozinho |
+| **pi** | 0.73.1 | `pi install git:github.com/...` clona o repo privado e resolve `pi.skills` do `package.json` |
 
 As 10 skills também passam no validador de referência da especificação
 ([`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref)): **10 válidas, 0 com erro**.
 
-Cursor, Kimi, Antigravity, OpenCode e pi **não foram testados** — os manifestos seguem o formato
-documentado de cada um, mas ninguém instalou ainda.
+**Não testados, e por quê:**
+
+- **Cursor** — o `cursor-agent` exige `cursor-agent login` (browser) antes de qualquer comando de
+  marketplace. O manifesto `.cursor-plugin/plugin.json` existe, mas ninguém instalou ainda.
+- **Kimi Code** e **Antigravity** — não há pacote oficial no npm. Os nomes parecidos que aparecem lá
+  são de terceiros (`kimi-code` é um proxy de outra pessoa; `antigravity` é um pacote-piada). Os
+  manifestos seguem o formato documentado de cada um, mas não foram exercitados.
 
 ## Plugins disponíveis
 
