@@ -59,7 +59,7 @@ jobs:
       - name: Regras da loja
         run: |
           python3 .frwk-validador/scripts/validar-plugin.py \
-            --repo . --base "${{ steps.base.outputs.ref }}"
+            --repo . --base "${{ steps.base.outputs.ref }}" --loja .frwk-validador
 
       - name: Validador oficial da spec Agent Skills
         run: |

@@ -27,8 +27,14 @@ As regras existem porque cada uma corresponde a um defeito que ja chegou em prod
 6. COMANDO CITADO NO README EXISTE
    O README da loja apontava para `/qa-handoff:update`, comando que nunca existiu.
 
+7. DESCRIPTION SINCRONIZADA COM A LOJA (so com --loja)
+   A entrada do plugin nos catalogos da loja repete verbatim a description do plugin.json.
+   Quatro entradas da loja ficaram meses descrevendo versoes antigas — quem instala pelo
+   marketplace decidia com base em texto defasado. Ao mudar a description aqui, atualize a
+   entrada correspondente em frwk-plugins ANTES de mergear este PR.
+
 Uso:
-    python scripts/validar-plugin.py [--repo CAMINHO] [--base REF]
+    python scripts/validar-plugin.py [--repo CAMINHO] [--base REF] [--loja CAMINHO]
 
 `--base` liga a regra 1: compara com essa ref do git (ex.: `origin/main`) e cobra o bump se o
 conteudo do plugin mudou. Sem ela, a regra 1 e pulada.
@@ -202,6 +208,35 @@ def regra_readme_comandos(raiz: Path, pj: dict) -> None:
                  f"README cita `/{nome}:{ref}`, mas commands/{ref}.md nao existe")
 
 
+def regra_loja_sincronizada(raiz: Path, pj: dict, loja: Path) -> None:
+    """A entrada deste plugin nos catalogos da loja repete verbatim a description do plugin.json."""
+    nome = pj.get("name", "")
+    desc = pj.get("description", "").strip()
+    achou = False
+    for rel in (".claude-plugin/marketplace.json", ".agents/plugins/marketplace.json"):
+        cat = loja / rel
+        if not cat.is_file():
+            continue
+        try:
+            d = json.loads(cat.read_text(encoding="utf-8"))
+        except Exception as e:
+            erro("loja-sincronizada", f"{cat}: {e}")
+            continue
+        for e_ in d.get("plugins", []):
+            if e_.get("name") != nome:
+                continue
+            achou = True
+            if e_.get("description", "").strip() != desc:
+                erro("loja-sincronizada",
+                     f"a entrada `{nome}` em {rel} da loja tem description diferente da deste "
+                     "plugin.json. Quem instala pelo marketplace decide com base nesse texto — "
+                     "atualize a entrada na loja (frwk-plugins) antes de mergear este PR.")
+    if not achou:
+        aviso("loja-sincronizada",
+              f"plugin `{nome}` nao esta em nenhum catalogo da loja — se e um plugin novo, "
+              "adicione a entrada em frwk-plugins depois deste merge.")
+
+
 def conteudo_mudou(raiz: Path, base: str) -> list[str]:
     try:
         r = subprocess.run(["git", "-C", str(raiz), "diff", "--name-only", f"{base}...HEAD"],
@@ -237,6 +272,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--repo", default=".", help="caminho do repositorio do plugin")
     ap.add_argument("--base", help="ref do git para comparar (liga a regra de bump)")
+    ap.add_argument("--loja", help="caminho de um checkout do frwk-plugins (liga a regra de "
+                                   "sincronia da description com a loja)")
     args = ap.parse_args()
 
     raiz = Path(args.repo).resolve()
@@ -254,6 +291,8 @@ def main() -> int:
     regra_versao_consistente(raiz, pj)
     regra_skills(raiz)
     regra_readme_comandos(raiz, pj)
+    if args.loja:
+        regra_loja_sincronizada(raiz, pj, Path(args.loja).resolve())
     if args.base:
         regra_versao_bump(raiz, pj, args.base)
 

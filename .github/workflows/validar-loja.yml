@@ -1,0 +1,24 @@
+name: Validar loja
+
+# A loja valida a si mesma: consistencia entre os dois catalogos (.claude-plugin para
+# Claude Code/Copilot/Cursor/Droid, .agents para o Codex) e entre catalogo e README.
+# A sincronia da description loja <-> plugin.json de cada plugin e cobrada no CI de cada
+# plugin (validar-plugin.py --loja), que enxerga esta loja publica — o caminho inverso
+# exigiria ler 11 repositorios privados que o GITHUB_TOKEN daqui nao alcanca.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Consistencia interna da loja
+        run: python3 scripts/validar-loja.py
+      - name: Sanidade do validador de plugin
+        run: python3 -m py_compile scripts/validar-plugin.py
