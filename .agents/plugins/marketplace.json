@@ -1,0 +1,200 @@
+{
+  "name": "frwk-plugins",
+  "interface": {
+    "displayName": "Framework System"
+  },
+  "plugins": [
+    {
+      "name": "equipping-stack-docs",
+      "description": "Generates project-local documentation skills with version-pinned docs via Context7 - covers new stacks and legacy codebases",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/equipping-stack-docs.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Equipping Stack Docs"
+      }
+    },
+    {
+      "name": "legacy-docs",
+      "description": "Deep, evidence-grounded documentation for legacy codebases: 5-phase pipeline with hot-spot triage, Grounding Contract and adversarial verification (Legacy Documentation Kit v4)",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/legacy-documentation-kit.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Legacy Docs"
+      }
+    },
+    {
+      "name": "qa-handoff",
+      "description": "Keeps QA-ready artifacts current at the end of every implementation: code-grounded test scenarios, test data, regression map and coverage matrix in the project's docs/qaHandoff/ directory, with real-browser validation and recorded evidence",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/qa-handoff.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "QA Handoff"
+      }
+    },
+    {
+      "name": "oskiller",
+      "description": "Migração guiada de uma stack de origem para uma arquitetura/stack de destino definida pelo usuário. Oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras de negócio RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/OSKiller.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "OSKiller"
+      }
+    },
+    {
+      "name": "neverstop",
+      "description": "Faz uma sessão de codegen (oskiller:execute) sobreviver ao estouro da janela de contexto: salva o estado num handoff MD padrão antes do limite e recarrega automaticamente após /clear.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/NeverStop.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "NeverStop"
+      }
+    },
+    {
+      "name": "estimativa-killer",
+      "description": "Estima o esforço combinado agente (oskiller) + humano para levar uma migração OutSystems da construção ao deploy em produção. Roda após /oskiller:plan e produz um cronograma de calendário por onda em plan/ESTIMATIVA.md.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/EstimativaKiller.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Estimativa Killer"
+      }
+    },
+    {
+      "name": "discovery-sync",
+      "description": "Transforma artefatos brutos de um cliente (proposta, atas, transcrições, chat, PDFs) numa pasta local, no Google Drive ou já formalizados num board Azure DevOps/Jira em um Discovery Document aprovado e um backlog Épico→Feature→User Story pronto para desenvolvimento, com sugestão de integração a Azure DevOps e afins.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/discovery-sync.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Discovery Sync"
+      }
+    },
+    {
+      "name": "flow-genesis-studio",
+      "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe — arquivo do Figma via MCP oficial, prints, ou HTML/mockup — herdando dele paleta, tipografia e telas já desenhadas em vez de inventar do zero. Craft real via interface-design (invocação obrigatória) e responsividade garantida em toda tela. Audita e corrige cada tela em paralelo, uma célula por tela, com a comparação visual contra o original dentro dela, e fecha com uma passada de escopo cruzado; acima de 25 telas entrega em ondas, com validação sua entre elas. Entrega HTML clicável sempre, tour guiado opcional (Driver.js), e export pro Figma pelo MCP (layers editáveis, sem API key) ou via code.to.design.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/flow-genesis-studio.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Flow Genesis Studio"
+      }
+    },
+    {
+      "name": "screendiscovery",
+      "description": "Mapeia de forma exaustiva uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — e entrega uma pasta com screenshots numerados e um mapeamento_aplicacao.md que referencia cada imagem.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/ScreenDiscovery.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Screen Discovery"
+      }
+    },
+    {
+      "name": "drive-transcriber-mcp",
+      "description": "Servidor MCP que lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente (faster-whisper, offline, sem custo de API) e sincroniza .txt/.srt de volta para o Drive.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/DriveTranscriberMCP.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Drive Transcriber MCP"
+      }
+    },
+    {
+      "name": "qa-intake",
+      "description": "Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/qa-intake.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "QA Intake"
+      }
+    },
+    {
+      "name": "selfrepair",
+      "description": "Auto-reparador de bugs de producao: descobre bugs na telemetria que o projeto ja usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP, ou arquivo de log, saida de container e painel web como fallback), agrupa cross-fonte e ranqueia com explicacao, investiga cada bug em paralelo, conversa com voce na busca e na correcao, corrige com teste de regressao vermelho antes do fix e verificacao adversarial, e registra em branch dedicada com commits atomicos e pull request sob confirmacao explicita por degrau.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/selfrepair.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "SelfRepair"
+      }
+    }
+  ]
+}
