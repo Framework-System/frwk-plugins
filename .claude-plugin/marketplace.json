@@ -47,7 +47,7 @@
       "description": "Migração guiada de uma stack de origem para uma arquitetura/stack de destino definida pelo usuário. Oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras de negócio RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos.",
       "source": {
         "source": "github",
-        "repo": "felipehorta/OSKiller"
+        "repo": "Framework-System/OSKiller"
       },
       "author": {
         "name": "Felipe Horta"
@@ -58,7 +58,7 @@
       "description": "Faz uma sessão de codegen (oskiller:execute) sobreviver ao estouro da janela de contexto: salva o estado num handoff MD padrão antes do limite e recarrega automaticamente após /clear.",
       "source": {
         "source": "github",
-        "repo": "felipehorta/NeverStop"
+        "repo": "Framework-System/NeverStop"
       },
       "author": {
         "name": "Felipe Horta"
@@ -69,7 +69,7 @@
       "description": "Estima o esforço combinado agente (oskiller) + humano para levar uma migração OutSystems da construção ao deploy em produção. Roda após /oskiller:plan e produz um cronograma de calendário por onda em plan/ESTIMATIVA.md.",
       "source": {
         "source": "github",
-        "repo": "felipehorta/EstimativaKiller"
+        "repo": "Framework-System/EstimativaKiller"
       },
       "author": {
         "name": "Felipe Horta"
