@@ -9,6 +9,7 @@ também em Codex, Cursor, Gemini CLI, Kimi, pi e outros ~45 agentes.
 
 - [Como funciona](#como-funciona)
 - [Instalação](#instalacao)
+- [Onde isto foi testado de verdade](#onde-isto-foi-testado-de-verdade)
 - [Plugins disponíveis](#plugins-disponiveis)
 - [Compatibilidade por agente](#compatibilidade-por-agente)
 - [Atualizando](#atualizando)
@@ -96,14 +97,55 @@ formato `github/repo` sem ajuste nenhum.
   droid plugin install discovery-sync@frwk-plugins
   ```
 
-### Codex, Cursor, Gemini CLI, Kimi, Antigravity, OpenCode, pi
+### Codex
 
-Estes agentes instalam **por plugin**, não pelo marketplace. Cada repositório traz o manifesto do
-respectivo harness e a seção **Instalação** com o comando exato. Exemplo, Gemini CLI:
+O Codex também lê um marketplace, mas num arquivo próprio: `.agents/plugins/marketplace.json`
+(não o `.claude-plugin/`). Este repositório traz os dois. **Testado com o Codex CLI 0.149.1.**
+
+- Registre o marketplace:
+
+  ```bash
+  codex plugin marketplace add https://github.com/Framework-System/frwk-plugins
+  ```
+
+- Veja o catálogo e instale:
+
+  ```bash
+  codex plugin list
+  codex plugin add discovery-sync@frwk-plugins
+  ```
+
+- Atualize o catálogo depois:
+
+  ```bash
+  codex plugin marketplace upgrade
+  ```
+
+### Gemini CLI
+
+Instala **por plugin**, não pelo marketplace. **Testado com o Gemini CLI 0.56.0** — funciona com
+repositório privado, usando suas credenciais git.
 
 ```bash
-gemini extensions install https://github.com/Framework-System/discovery-sync
+gemini extensions install https://github.com/Framework-System/discovery-sync --consent
 ```
+
+Sem `--consent` o comando trava esperando confirmação interativa.
+
+A extensão injeta o `GEMINI.md`, que inclui a skill inteira no contexto da sessão — é assim que ela
+chega ao Gemini.
+
+> **Ruído conhecido.** Nos plugins que têm `agents/`, o Gemini tenta carregá-los como agentes dele e
+> falha com `Invalid tool name`, a cada comando. É cosmético: a extensão instala, habilita e a skill
+> funciona. A causa é vocabulário de ferramenta — o Gemini usa `read_file`/`glob`, o Claude Code usa
+> `Read`/`Glob`, e o campo `tools` do agente só comporta um vocabulário. Testamos converter o formato
+> para array YAML (que o Claude Code aceita); resolve a validação estrutural, mas os nomes seguem
+> inválidos. Não há correção sem manter dois conjuntos de agentes.
+
+### Cursor, Kimi, Antigravity, OpenCode, pi
+
+Instalam **por plugin**. Cada repositório traz o manifesto do respectivo harness e a seção
+**Instalação** com o comando exato.
 
 ### GitHub Copilot no editor (VS Code, JetBrains, cloud agent, code review)
 
@@ -118,6 +160,22 @@ cp -R /caminho/para/discovery-sync/skills/discovery-sync .agents/skills/
 
 Copie `skills/<nome>/` do repositório do plugin para o diretório de skills do seu agente — os
 caminhos mais comuns são `.agents/skills/` (no repositório) e `~/.agents/skills/` (pessoal).
+
+## Onde isto foi testado de verdade
+
+Nem tudo abaixo é leitura de documentação. Estes três foram instalados e exercitados nesta máquina:
+
+| Agente | Versão testada | Resultado |
+|---|---|---|
+| **GitHub Copilot CLI** | 1.0.80 | marketplace aceito, 12 plugins no `browse`, 9 instalados. Importa `commands/` como skills (ver aviso de colisão abaixo) |
+| **Codex CLI** | 0.149.1 | exigiu `.agents/plugins/marketplace.json`, que foi adicionado. 9 plugins instalados e habilitados |
+| **Gemini CLI** | 0.56.0 | instala de repositório privado; a skill chega via `GEMINI.md`. `agents/` gera ruído de validação |
+
+As 10 skills também passam no validador de referência da especificação
+([`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref)): **10 válidas, 0 com erro**.
+
+Cursor, Kimi, Antigravity, OpenCode e pi **não foram testados** — os manifestos seguem o formato
+documentado de cada um, mas ninguém instalou ainda.
 
 ## Plugins disponíveis
 
