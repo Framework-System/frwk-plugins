@@ -143,7 +143,27 @@ chega ao Gemini.
 > para array YAML (que o Claude Code aceita); resolve a validação estrutural, mas os nomes seguem
 > inválidos. Não há correção sem manter dois conjuntos de agentes.
 
-### Cursor, Kimi, Antigravity, OpenCode, pi
+### Cursor
+
+**Testado com o Cursor Agent 2026.08.11.** O Cursor lê o mesmo `marketplace.json` do Claude Code,
+mas exige a URL completa — o atalho `owner/repo` é recusado com `Invalid URL format`.
+
+- Faça login (abre o navegador):
+
+  ```bash
+  cursor-agent login
+  ```
+
+- Registre o marketplace, com `github.com/` na frente:
+
+  ```bash
+  cursor-agent plugin marketplace add github.com/Framework-System/frwk-plugins
+  ```
+
+O registro vale para a conta, não para o projeto, e o Cursor já clona os repositórios no ato.
+A ativação de cada plugin é feita no app, não pelo CLI — ele só tem `plugin marketplace`.
+
+### Kimi, Antigravity, OpenCode, pi
 
 O OpenCode usa `skills` como **objeto com `paths`** no `opencode.json`, não uma lista. O pi instala
 com `pi install git:github.com/Framework-System/<repo>`. Veja o README de cada plugin para o comando exato.
@@ -176,14 +196,13 @@ Nem tudo abaixo é leitura de documentação. Estes foram instalados e exercitad
 | **Gemini CLI** | 0.56.0 | instala de repositório privado; skill entregue via `GEMINI.md`. `agents/` gera ruído de validação |
 | **OpenCode** | 1.18.21 | **3 skills carregadas** via `skills.paths`. Também lê `~/.claude/skills` sozinho |
 | **pi** | 0.73.1 | `pi install git:github.com/...` clona o repo privado e resolve `pi.skills` do `package.json` |
+| **Cursor Agent** | 2026.08.11 | marketplace aceito no nível da conta; **os 12 repositórios clonados**. Exige URL completa e login |
 
 As 10 skills também passam no validador de referência da especificação
 ([`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref)): **10 válidas, 0 com erro**.
 
 **Não testados, e por quê:**
 
-- **Cursor** — o `cursor-agent` exige `cursor-agent login` (browser) antes de qualquer comando de
-  marketplace. O manifesto `.cursor-plugin/plugin.json` existe, mas ninguém instalou ainda.
 - **Kimi Code** e **Antigravity** — não há pacote oficial no npm. Os nomes parecidos que aparecem lá
   são de terceiros (`kimi-code` é um proxy de outra pessoa; `antigravity` é um pacote-piada). Os
   manifestos seguem o formato documentado de cada um, mas não foram exercitados.
