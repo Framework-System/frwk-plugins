@@ -236,7 +236,7 @@ As 10 skills também passam no validador de referência da especificação
 | Plugin | Versão | Claude Code | Demais agentes | Comandos | Subagentes | Hooks |
 |---|---|---|---|---|---|---|
 | **equipping-stack-docs** | `1.0.0` | sim | sim | — | — | — |
-| **legacy-docs** | `4.2.0` | sim | — | 1 | — | — |
+| **legacy-docs** | `4.3.0` | sim | sim | 1 | — | — |
 | **qa-handoff** | `1.32.0` | sim | sim | 7 | — | — |
 | **oskiller** | `0.4.0` | sim | sim | 9 | 9 | — |
 | **neverstop** | `0.2.0` | sim | — | 2 | — | sim |
@@ -275,9 +275,8 @@ No Claude Code isso não acontece: lá cada comando é prefixado pelo plugin (`/
 `/qa-intake:status` coexistem). **Se for usar o Copilot CLI, instale só os plugins que você
 realmente precisa.**
 
-Os três com **—**:
+Os dois com **—**:
 
-- **legacy-docs** — não tem `SKILL.md`; toda a lógica está num comando do Claude Code.
 - **drive-transcriber-mcp** — é um servidor MCP, não uma skill. MCP é padrão aberto: **já funciona**
   em Codex, Copilot, Cursor e Gemini, bastando registrar o servidor.
 - **neverstop** — o valor dele está inteiro nos hooks `PreCompact`/`SessionStart`/`Stop` do Claude
