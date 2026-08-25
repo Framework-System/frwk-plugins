@@ -146,6 +146,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "go-live",
+      "description": "Assistente de publicação ponta a ponta e neutro de provedor: define o ambiente comparando 2–3 candidatos entre provedores (PaaS, serverless, containers, Kubernetes), estima o custo com preço em tempo real e premissas explícitas, executa o deploy pelo MCP/CLI do provedor escolhido em degraus confirmados, gradua para CI/CD com OIDC e configura monitoramento escalonado pelo porte — com gate humano antes de qualquer recurso criado ou custo incorrido.",
+      "source": {
+        "source": "github",
+        "repo": "Framework-System/go-live"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }
