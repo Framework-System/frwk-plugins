@@ -35,7 +35,7 @@ você descreve o que quer e o agente carrega a skill pela descrição dela.
 A instalação muda conforme o agente. Se você usa mais de um, instale em cada um separadamente.
 
 > **A maioria dos repositórios é privada.** Este repositório da loja e o `equipping-stack-docs` são
-> públicos; os outros 11 plugins são privados. Qualquer comando que baixe um plugin privado exige que
+> públicos; os outros 12 plugins são privados. Qualquer comando que baixe um plugin privado exige que
 > você já esteja autenticado no GitHub (`gh auth login`, credential helper ou chave SSH no
 > `ssh-agent`). Sem isso o download falha com erro de autenticação, não de "não encontrado".
 
@@ -64,6 +64,7 @@ Entrega completa: skills, comandos, subagentes e hooks.
   /plugin install drive-transcriber-mcp@frwk-plugins
   /plugin install qa-intake@frwk-plugins
   /plugin install selfrepair@frwk-plugins
+  /plugin install go-live@frwk-plugins
   ```
 
 ### GitHub Copilot CLI
@@ -223,6 +224,7 @@ As 10 skills também passam no validador de referência da especificação
 | **drive-transcriber-mcp** | Servidor MCP: lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente com faster-whisper (offline, sem custo de API) e sincroniza `.txt`/`.srt` de volta para o Drive | Restrito | [Framework-System/DriveTranscriberMCP](https://github.com/Framework-System/DriveTranscriberMCP) |
 | **qa-intake** | Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto (`/qa-intake:start`) | Restrito | [Framework-System/qa-intake](https://github.com/Framework-System/qa-intake) |
 | **selfrepair** | Auto-reparador de bugs de produção: descobre bugs na telemetria que o projeto já usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP; arquivo de log, saída de container e painel web como fallback), agrupa cross-fonte e ranqueia com decomposição explícita do score, investiga cada bug em paralelo, **conversa com você na busca e na correção**, corrige com teste de regressão vermelho antes do fix e verificação adversarial, e registra em branch dedicada com commits atômicos e PR sob confirmação por degrau (`/selfrepair:start`) | Restrito | [Framework-System/selfrepair](https://github.com/Framework-System/selfrepair) |
+| **go-live** | Assistente de publicação ponta a ponta e neutro de provedor: compara 2–3 ambientes candidatos entre provedores (PaaS, serverless, containers, Kubernetes) com critérios declarados, estima o custo com preço em tempo real e premissas explícitas, executa o deploy pelo MCP/CLI do provedor escolhido em degraus confirmados com runbook de rollback, gradua para CI/CD com OIDC e liga o monitoramento escalonado pelo porte (`/go-live:start`) | Restrito | [Framework-System/go-live](https://github.com/Framework-System/go-live) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 
@@ -247,6 +249,7 @@ As 10 skills também passam no validador de referência da especificação
 | **drive-transcriber-mcp** | `0.1.1` | sim | — | — | — | — |
 | **qa-intake** | `0.3.0` | sim | sim | 5 | 1 | — |
 | **selfrepair** | `0.2.0` | sim | sim | 6 | 3 | — |
+| **go-live** | `0.1.0` | sim | sim | 8 | 3 | — |
 
 **Demais agentes = sim** significa que o repositório traz os manifestos de Codex, Cursor, Kimi,
 Gemini e pi, todos apontando para a mesma skill — sem cópia duplicada.
@@ -261,8 +264,8 @@ nossos, porque **os nomes colidem em silêncio**:
 
 | Nome disputado | Plugins que o usam |
 |---|---|
-| `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, oskiller, qa-intake |
-| `start` | discovery-sync, selfrepair, flow-genesis-studio, oskiller, qa-intake |
+| `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, oskiller, qa-intake, go-live |
+| `start` | discovery-sync, selfrepair, flow-genesis-studio, oskiller, qa-intake, go-live |
 | `ingest` | discovery-sync, qa-intake |
 | `review` | discovery-sync, flow-genesis-studio |
 | `verify` | flow-genesis-studio, oskiller |
@@ -290,7 +293,7 @@ Os dois com **—**:
 ```
 
 > **Rode o primeiro comando manualmente.** O auto-update em background desabilita os credential
-> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 11 dos 12
+> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 12 dos 13
 > plugins. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
 > registre o marketplace por SSH, com a chave carregada no `ssh-agent`.
 
