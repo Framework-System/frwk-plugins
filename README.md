@@ -212,6 +212,7 @@ As 10 skills também passam no validador de referência da especificação
 
 | Plugin | O que faz | Acesso | Repositório |
 |---|---|---|---|
+| **dev-flow** | Transforma Work Items de um board de engenharia (Azure DevOps via MCP ou pasta local) em código com testes, revisão adversarial cross-harness, evidências e PR — perfil técnico persistente, spec de engenharia, tasks context-fit, workers de contexto fresco e recibos: nada é done sem evidência e veredito SHIP (`/dev-flow:run`) | Restrito | [Framework-System/dev-flow](https://github.com/Framework-System/dev-flow) |
 | **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | Público | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
 | **legacy-docs** | Documentação profunda e verificada de sistemas legados: pipeline de 5 fases com triage de hot-spots e verificação adversarial (`/legacy-docs:document`) | Restrito | [Framework-System/legacy-documentation-kit](https://github.com/Framework-System/legacy-documentation-kit) |
 | **qa-handoff** | Mantém artefatos de QA ao fim de cada demanda em `docs/qaHandoff/`: cenários grounded no código, massa de dados, regressão e matriz de cobertura, com validação em browser real e evidência gravada; cobre front e back, incluindo integração, performance (k6) e confronto com requisitos (`/qa-handoff:scenarios-back-front`) | Restrito | [Framework-System/qa-handoff](https://github.com/Framework-System/qa-handoff) |
@@ -237,6 +238,7 @@ As 10 skills também passam no validador de referência da especificação
 
 | Plugin | Versão | Claude Code | Demais agentes | Comandos | Subagentes | Hooks |
 |---|---|---|---|---|---|---|
+| **dev-flow** | `0.5.0` | sim | parcial (Codex/Cursor) | 11 | 4 | sim |
 | **equipping-stack-docs** | `1.0.0` | sim | sim | — | — | — |
 | **legacy-docs** | `4.3.0` | sim | sim | 1 | — | — |
 | **qa-handoff** | `1.32.0` | sim | sim | 7 | — | — |
