@@ -52,6 +52,7 @@ Entrega completa: skills, comandos, subagentes e hooks.
 - Instale o que precisar:
 
   ```bash
+  /plugin install dev-flow@frwk-plugins
   /plugin install equipping-stack-docs@frwk-plugins
   /plugin install legacy-docs@frwk-plugins
   /plugin install qa-handoff@frwk-plugins
