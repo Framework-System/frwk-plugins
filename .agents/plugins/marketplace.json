@@ -5,6 +5,22 @@
   },
   "plugins": [
     {
+      "name": "dev-flow",
+      "description": "Transforma Work Items de um board de engenharia (Azure DevOps via MCP ou pasta local) em código com testes, revisão adversarial cross-harness, evidências e PR — com perfil técnico persistente, spec de engenharia, tasks context-fit, workers de contexto fresco e recibos: nada é done sem evidência e veredito SHIP.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/dev-flow.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools",
+      "interface": {
+        "displayName": "Dev Flow"
+      }
+    },
+    {
       "name": "equipping-stack-docs",
       "description": "Generates project-local documentation skills with version-pinned docs via Context7 - covers new stacks and legacy codebases",
       "source": {
