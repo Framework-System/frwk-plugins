@@ -56,7 +56,7 @@ Entrega completa: skills, comandos, subagentes e hooks.
   /plugin install equipping-stack-docs@frwk-plugins
   /plugin install legacy-docs@frwk-plugins
   /plugin install qa-handoff@frwk-plugins
-  /plugin install oskiller@frwk-plugins
+  /plugin install legacy-killer@frwk-plugins
   /plugin install neverstop@frwk-plugins
   /plugin install estimativa-killer@frwk-plugins
   /plugin install discovery-sync@frwk-plugins
@@ -217,9 +217,9 @@ As 10 skills também passam no validador de referência da especificação
 | **equipping-stack-docs** | Gera skills de documentação locais ao projeto com docs na versão que o projeto usa (inclusive legados), via Context7 | Público | [Framework-System/equipping-stack-docs](https://github.com/Framework-System/equipping-stack-docs) |
 | **legacy-docs** | Documentação profunda e verificada de sistemas legados: pipeline de 5 fases com triage de hot-spots e verificação adversarial (`/legacy-docs:document`) | Restrito | [Framework-System/legacy-documentation-kit](https://github.com/Framework-System/legacy-documentation-kit) |
 | **qa-handoff** | Mantém artefatos de QA ao fim de cada demanda em `docs/qaHandoff/`: cenários grounded no código, massa de dados, regressão e matriz de cobertura, com validação em browser real e evidência gravada; cobre front e back, incluindo integração, performance (k6) e confronto com requisitos (`/qa-handoff:scenarios-back-front`) | Restrito | [Framework-System/qa-handoff](https://github.com/Framework-System/qa-handoff) |
-| **oskiller** | Migração guiada de uma stack de origem para a arquitetura/stack de destino definida por você, em oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos (`/oskiller:start`) | Restrito | [Framework-System/OSKiller](https://github.com/Framework-System/OSKiller) |
-| **neverstop** | Faz sessões longas de codegen (oskiller:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | Restrito | [Framework-System/NeverStop](https://github.com/Framework-System/NeverStop) |
-| **estimativa-killer** | Estima o esforço agente + humano de uma migração OutSystems até produção; roda após /oskiller:plan e gera cronograma por onda | Restrito | [Framework-System/EstimativaKiller](https://github.com/Framework-System/EstimativaKiller) |
+| **legacy-killer** | Migração guiada de uma stack de origem para a arquitetura/stack de destino definida por você, em oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos (`/legacy-killer:start`) | Restrito | [Framework-System/OSKiller](https://github.com/Framework-System/OSKiller) |
+| **neverstop** | Faz sessões longas de codegen (legacy-killer:execute) sobreviverem ao estouro da janela de contexto, com handoff salvo e recarga automática após /clear | Restrito | [Framework-System/NeverStop](https://github.com/Framework-System/NeverStop) |
+| **estimativa-killer** | Estima o esforço agente + humano de uma migração de legado até produção; roda após /legacy-killer:plan e gera cronograma por onda | Restrito | [Framework-System/EstimativaKiller](https://github.com/Framework-System/EstimativaKiller) |
 | **discovery-sync** | Do artefato bruto do cliente — pasta local, Google Drive ou board Azure DevOps/Jira já em uso — ao backlog pronto para dev: inventário, quiz adaptativo, Discovery Document com gate de aprovação, Epic/Feature/User Story rastreável e CSV de import gerado para o processo certo do Azure DevOps (Basic/Agile/Scrum/CMMI) (`/discovery-sync:start`) | Restrito | [Framework-System/discovery-sync](https://github.com/Framework-System/discovery-sync) |
 | **screendiscovery** | Mapeia exaustivamente uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — entregando screenshots numerados e um `mapeamento_aplicacao.md` que referencia cada imagem (`/screendiscovery:mapear`) | Restrito | [Framework-System/ScreenDiscovery](https://github.com/Framework-System/ScreenDiscovery) |
 | **flow-genesis-studio** | Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe (Figma via MCP, prints, HTML) — herdando dele paleta e tipografia: blueprint com gate de aprovação, telas HTML clicáveis com craft via interface-design, auditoria em paralelo (uma célula por tela, com comparação visual contra o original) mais passada de escopo cruzado, entrega em ondas acima de 25 telas, e export pro Figma pelo MCP ou via code.to.design (`/flow-genesis-studio:start`) | Restrito | [Framework-System/flow-genesis-studio](https://github.com/Framework-System/flow-genesis-studio) |
@@ -243,7 +243,7 @@ As 10 skills também passam no validador de referência da especificação
 | **equipping-stack-docs** | `1.0.0` | sim | sim | — | — | — |
 | **legacy-docs** | `4.3.0` | sim | sim | 1 | — | — |
 | **qa-handoff** | `1.32.0` | sim | sim | 7 | — | — |
-| **oskiller** | `0.4.0` | sim | sim | 9 | 9 | — |
+| **legacy-killer** | `0.4.0` | sim | sim | 9 | 9 | — |
 | **neverstop** | `0.2.0` | sim | — | 2 | — | sim |
 | **estimativa-killer** | `0.2.0` | sim | sim | 1 | — | — |
 | **discovery-sync** | `0.15.0` | sim | sim | 10 | 5 | — |
@@ -267,17 +267,17 @@ nossos, porque **os nomes colidem em silêncio**:
 
 | Nome disputado | Plugins que o usam |
 |---|---|
-| `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, oskiller, qa-intake, go-live |
-| `start` | discovery-sync, selfrepair, flow-genesis-studio, oskiller, qa-intake, go-live |
+| `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, legacy-killer, qa-intake, go-live |
+| `start` | discovery-sync, selfrepair, flow-genesis-studio, legacy-killer, qa-intake, go-live |
 | `ingest` | discovery-sync, qa-intake |
 | `review` | discovery-sync, flow-genesis-studio |
-| `verify` | flow-genesis-studio, oskiller |
+| `verify` | flow-genesis-studio, legacy-killer |
 
 Medido com os 9 plugins instalados: **58 componentes viram 46 nomes únicos — 12 ficam
 inacessíveis**, sem aviso. Quem pedir "status" recebe o do discovery-sync, qualquer que fosse a
 intenção.
 
-No Claude Code isso não acontece: lá cada comando é prefixado pelo plugin (`/oskiller:status` e
+No Claude Code isso não acontece: lá cada comando é prefixado pelo plugin (`/legacy-killer:status` e
 `/qa-intake:status` coexistem). **Se for usar o Copilot CLI, instale só os plugins que você
 realmente precisa.**
 
