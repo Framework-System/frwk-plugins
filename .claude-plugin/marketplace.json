@@ -173,6 +173,18 @@
         "name": "Framework System",
         "email": "rafaelbonaldi@frwk.com.br"
       }
+    },
+    {
+      "name": "symbio-devkit",
+      "description": "Método e papéis da Symbio para o ciclo inteiro de produto (portfólio, gestão, produto, UX, arquitetura, liderança técnica, desenvolvimento, dados, QA, segurança, observabilidade, release e sincronia com o tracker), agnóstico de cliente e de stack: arquitetura, padrões e nomenclatura saem da análise dos repositórios do cliente e da documentação oficial da stack consultada no momento do uso, nunca de um padrão fixo. Gates com aprovação humana vinculada ao conteúdo, estado retomável em disco e orquestração dos plugins irmãos da frwk-plugins.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/symbio-devkit.git"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
     }
   ]
 }

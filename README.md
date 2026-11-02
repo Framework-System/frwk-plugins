@@ -11,6 +11,7 @@ também em Codex, Cursor, Gemini CLI, Kimi, pi e outros ~45 agentes.
 - [Instalação](#instalacao)
 - [Onde isto foi testado de verdade](#onde-isto-foi-testado-de-verdade)
 - [Plugins disponíveis](#plugins-disponiveis)
+- [Skills disponíveis](#skills-disponiveis)
 - [Compatibilidade por agente](#compatibilidade-por-agente)
 - [Atualizando](#atualizando)
 - [Adicionando um plugin novo](#adicionando-um-plugin-novo)
@@ -66,6 +67,12 @@ Entrega completa: skills, comandos, subagentes e hooks.
   /plugin install qa-intake@frwk-plugins
   /plugin install selfrepair@frwk-plugins
   /plugin install go-live@frwk-plugins
+  ```
+
+- E os kits de skills (ver [Skills disponíveis](#skills-disponiveis)):
+
+  ```bash
+  /plugin install symbio-devkit@frwk-plugins
   ```
 
 ### GitHub Copilot CLI
@@ -234,6 +241,27 @@ As 10 skills também passam no validador de referência da especificação
 > ```
 > git config --global url."https://github.com/".insteadOf "git@github.com:"
 > ```
+
+## Skills disponíveis
+
+Um plugin resolve **uma etapa** do trabalho (documentar o legado, gerar o protótipo, publicar).
+Um kit de skills é **o método**: um conjunto de skills de papel que conduz o produto inteiro e
+chama os plugins acima quando estão instalados. Para a loja ele é um item como outro qualquer —
+mesmo catálogo, mesmo `/plugin install` —, mas a forma de usar é outra: você não roda uma
+esteira, você conversa com o papel certo ("prepara o G3", "em que pé está o projeto?") e o
+roteador escolhe a skill.
+
+| Skill | O que faz | Acesso | Repositório |
+|---|---|---|---|
+| **symbio-devkit** | Método e papéis da Symbio do portfólio à operação, em qualquer cliente e stack: 15 skills de papel (portfólio, gestão, produto, UX, arquitetura, dados, segurança, observabilidade, liderança técnica, desenvolvimento, legado, QA, release, tracker, Doc Viva) e um roteador que lê o estado em `docs/symbio/` e escolhe rota e papel. Arquitetura, padrões e nomenclatura saem dos repositórios do cliente e da doc oficial da stack consultada na hora, com fonte e data; gates G1–G5 e marcos M0–M7 com verificação determinística e adversarial, e aprovação humana gravada com o hash do que foi aprovado — o agente não consegue gravá-la. Orquestra discovery-sync, flow-genesis-studio, dev-flow, qa-handoff, go-live e os demais irmãos (`/symbio-devkit:iniciar`) | Restrito | [Framework-System/symbio-devkit](https://github.com/Framework-System/symbio-devkit) |
+
+| Skill | Versão | Claude Code | Demais agentes | Skills | Comandos | Subagentes | Hooks |
+|---|---|---|---|---|---|---|---|
+| **symbio-devkit** | `0.1.1` | sim | sim | 16 | 5 | 4 | sim |
+
+Fora do Claude Code as 16 skills, os templates e o CLI `scripts/symbio.py` funcionam igual; os
+hooks não rodam, e a garantia passa a ser a proteção de branch no servidor do cliente — o próprio
+kit orienta essa configuração.
 
 ## Compatibilidade por agente
 
