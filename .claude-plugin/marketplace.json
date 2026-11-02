@@ -13,8 +13,8 @@
       "name": "dev-flow",
       "description": "Transforma Work Items de um board de engenharia (Azure DevOps via MCP ou pasta local) em código com testes, revisão adversarial cross-harness, evidências e PR — com perfil técnico persistente, spec de engenharia, tasks context-fit, workers de contexto fresco e recibos: nada é done sem evidência e veredito SHIP.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/dev-flow"
+        "source": "url",
+        "url": "https://github.com/Framework-System/dev-flow.git"
       },
       "author": {
         "name": "Framework System",
@@ -25,8 +25,8 @@
       "name": "equipping-stack-docs",
       "description": "Generates project-local documentation skills with version-pinned docs via Context7 - covers new stacks and legacy codebases",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/equipping-stack-docs"
+        "source": "url",
+        "url": "https://github.com/Framework-System/equipping-stack-docs.git"
       },
       "author": {
         "name": "Framework System",
@@ -37,8 +37,8 @@
       "name": "legacy-docs",
       "description": "Deep, evidence-grounded documentation for legacy codebases: 5-phase pipeline with hot-spot triage, Grounding Contract and adversarial verification (Legacy Documentation Kit v4)",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/legacy-documentation-kit"
+        "source": "url",
+        "url": "https://github.com/Framework-System/legacy-documentation-kit.git"
       },
       "author": {
         "name": "Framework System",
@@ -49,8 +49,8 @@
       "name": "qa-handoff",
       "description": "Keeps QA-ready artifacts current at the end of every implementation: code-grounded test scenarios, test data, regression map and coverage matrix in the project's docs/qaHandoff/ directory, with real-browser validation and recorded evidence",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/qa-handoff"
+        "source": "url",
+        "url": "https://github.com/Framework-System/qa-handoff.git"
       },
       "author": {
         "name": "Framework System",
@@ -61,8 +61,8 @@
       "name": "legacy-killer",
       "description": "Migração guiada de uma stack de origem para uma arquitetura/stack de destino definida pelo usuário. Oito fases com gates: intake → oráculo do legado observado → documentação As-Is (regras de negócio RN-* rastreáveis) → gate de decisões DEC-* → assessment de portabilidade → plano em ondas → geração de código → verificação contra dois oráculos externos.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/OSKiller"
+        "source": "url",
+        "url": "https://github.com/Framework-System/OSKiller.git"
       },
       "author": {
         "name": "Felipe Horta"
@@ -72,8 +72,8 @@
       "name": "neverstop",
       "description": "Faz uma sessão de codegen (legacy-killer:execute) sobreviver ao estouro da janela de contexto: salva o estado num handoff MD padrão antes do limite e recarrega automaticamente após /clear.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/NeverStop"
+        "source": "url",
+        "url": "https://github.com/Framework-System/NeverStop.git"
       },
       "author": {
         "name": "Felipe Horta"
@@ -83,8 +83,8 @@
       "name": "estimativa-killer",
       "description": "Estima o esforço combinado agente (legacy-killer) + humano para levar uma migração de legado da construção ao deploy em produção. Roda após /legacy-killer:plan e produz um cronograma de calendário por onda em plan/ESTIMATIVA.md.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/EstimativaKiller"
+        "source": "url",
+        "url": "https://github.com/Framework-System/EstimativaKiller.git"
       },
       "author": {
         "name": "Felipe Horta"
@@ -94,8 +94,8 @@
       "name": "discovery-sync",
       "description": "Transforma artefatos brutos de um cliente (proposta, atas, transcrições, chat, PDFs) numa pasta local, no Google Drive ou já formalizados num board Azure DevOps/Jira em um Discovery Document aprovado e um backlog Épico→Feature→User Story pronto para desenvolvimento, com sugestão de integração a Azure DevOps e afins.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/discovery-sync"
+        "source": "url",
+        "url": "https://github.com/Framework-System/discovery-sync.git"
       },
       "author": {
         "name": "Framework System",
@@ -106,8 +106,8 @@
       "name": "flow-genesis-studio",
       "description": "Gera protótipos de tela navegáveis e rastreáveis a partir do Discovery Document/backlog do discovery-sync, de texto livre, ou de um protótipo que já existe — arquivo do Figma via MCP oficial, prints, ou HTML/mockup — herdando dele paleta, tipografia e telas já desenhadas em vez de inventar do zero. Craft real via interface-design (invocação obrigatória) e responsividade garantida em toda tela. Audita e corrige cada tela em paralelo, uma célula por tela, com a comparação visual contra o original dentro dela, e fecha com uma passada de escopo cruzado; acima de 25 telas entrega em ondas, com validação sua entre elas. Entrega HTML clicável sempre, tour guiado opcional (Driver.js), e export pro Figma pelo MCP (layers editáveis, sem API key) ou via code.to.design.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/flow-genesis-studio"
+        "source": "url",
+        "url": "https://github.com/Framework-System/flow-genesis-studio.git"
       },
       "author": {
         "name": "Framework System",
@@ -118,8 +118,8 @@
       "name": "screendiscovery",
       "description": "Mapeia de forma exaustiva uma aplicação web aberta no Chrome — cada tela, aba, menu, modal e estado — e entrega uma pasta com screenshots numerados e um mapeamento_aplicacao.md que referencia cada imagem.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/ScreenDiscovery"
+        "source": "url",
+        "url": "https://github.com/Framework-System/ScreenDiscovery.git"
       },
       "author": {
         "name": "Framework System",
@@ -130,8 +130,8 @@
       "name": "drive-transcriber-mcp",
       "description": "Servidor MCP que lê áudios/vídeos de uma pasta do Google Drive, transcreve localmente (faster-whisper, offline, sem custo de API) e sincroniza .txt/.srt de volta para o Drive.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/DriveTranscriberMCP"
+        "source": "url",
+        "url": "https://github.com/Framework-System/DriveTranscriberMCP.git"
       },
       "author": {
         "name": "Douglas Everton de Oliveira",
@@ -142,8 +142,8 @@
       "name": "qa-intake",
       "description": "Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/qa-intake"
+        "source": "url",
+        "url": "https://github.com/Framework-System/qa-intake.git"
       },
       "author": {
         "name": "Framework System",
@@ -154,8 +154,8 @@
       "name": "selfrepair",
       "description": "Auto-reparador de bugs de producao: descobre bugs na telemetria que o projeto ja usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP, ou arquivo de log, saida de container e painel web como fallback), agrupa cross-fonte e ranqueia com explicacao, investiga cada bug em paralelo, conversa com voce na busca e na correcao, corrige com teste de regressao vermelho antes do fix e verificacao adversarial, e registra em branch dedicada com commits atomicos e pull request sob confirmacao explicita por degrau.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/selfrepair"
+        "source": "url",
+        "url": "https://github.com/Framework-System/selfrepair.git"
       },
       "author": {
         "name": "Framework System",
@@ -166,8 +166,8 @@
       "name": "go-live",
       "description": "Assistente de publicação ponta a ponta e neutro de provedor: define o ambiente comparando 2–3 candidatos entre provedores (PaaS, serverless, containers, Kubernetes), lê a política de publicação do repositório quando existe (.go-live.md) e pula direto para uma confirmação única, estima o custo com preço em tempo real e premissas explícitas, executa o deploy pelo MCP/CLI do provedor escolhido em degraus confirmados, gradua para CI/CD com OIDC e configura monitoramento escalonado pelo porte — com gate humano antes de qualquer recurso criado ou custo incorrido.",
       "source": {
-        "source": "github",
-        "repo": "Framework-System/go-live"
+        "source": "url",
+        "url": "https://github.com/Framework-System/go-live.git"
       },
       "author": {
         "name": "Framework System",

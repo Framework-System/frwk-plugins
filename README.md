@@ -36,7 +36,7 @@ você descreve o que quer e o agente carrega a skill pela descrição dela.
 A instalação muda conforme o agente. Se você usa mais de um, instale em cada um separadamente.
 
 > **A maioria dos repositórios é privada.** Este repositório da loja e o `equipping-stack-docs` são
-> públicos; os outros 12 plugins são privados. Qualquer comando que baixe um plugin privado exige que
+> públicos; os outros 14 itens são privados. Qualquer comando que baixe um plugin privado exige que
 > você já esteja autenticado no GitHub (`gh auth login`, credential helper ou chave SSH no
 > `ssh-agent`). Sem isso o download falha com erro de autenticação, não de "não encontrado".
 
@@ -196,7 +196,8 @@ caminhos mais comuns são `.agents/skills/` (no repositório) e `~/.agents/skill
 
 ## Onde isto foi testado de verdade
 
-Nem tudo abaixo é leitura de documentação. Estes foram instalados e exercitados nesta máquina:
+Nem tudo abaixo é leitura de documentação. Estes foram instalados e exercitados nesta máquina,
+quando a loja tinha 12 plugins — os números da tabela são dessa medição:
 
 | Agente | Versão | Resultado |
 |---|---|---|
@@ -237,10 +238,21 @@ As 10 skills também passam no validador de referência da especificação
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 
-> **Dica (clone SSH sem chave):** se a instalação de um plugin restrito falhar com `Permission denied (publickey)`, redirecione o git para HTTPS autenticado:
-> ```
-> git config --global url."https://github.com/".insteadOf "git@github.com:"
-> ```
+> **Transporte do clone.** As entradas deste marketplace declaram `source: "url"` com URL HTTPS
+> (`https://github.com/<org>/<repo>.git`), então a instalação clona por HTTPS e usa o seu credential
+> helper — `gh auth login` já resolve. Isso é deliberado: com `source: "github"` o Claude Code monta
+> `git@github.com:<org>/<repo>.git` e clona **só por SSH**, sem fallback, então quem não tem chave SSH
+> na máquina falha com `Permission denied (publickey)` mesmo tendo acesso de leitura ao repositório.
+>
+> - `could not read Username` / `Authentication failed` e você só usa chave SSH:
+>   ```
+>   git config --global url."git@github.com:".insteadOf "https://github.com/"
+>   ```
+> - `Permission denied (publickey)` ainda hoje: seu catálogo está em cache antigo. Rode
+>   `/plugin marketplace update frwk-plugins` e tente de novo; como paliativo,
+>   ```
+>   git config --global url."https://github.com/".insteadOf "git@github.com:"
+>   ```
 
 ## Skills disponíveis
 
@@ -257,9 +269,9 @@ roteador escolhe a skill.
 
 | Skill | Versão | Claude Code | Demais agentes | Skills | Comandos | Subagentes | Hooks |
 |---|---|---|---|---|---|---|---|
-| **symbio-devkit** | `0.1.1` | sim | sim | 16 | 5 | 4 | sim |
+| **symbio-devkit** | `0.1.2` | sim | sim | 16 | 5 | 4 | sim |
 
-Fora do Claude Code as 16 skills, os templates e o CLI `scripts/symbio.py` funcionam igual; os
+Fora do Claude Code as 16 skills (15 de papel e o roteador), os templates e o CLI `scripts/symbio.py` funcionam igual; os
 hooks não rodam, e a garantia passa a ser a proteção de branch no servidor do cliente — o próprio
 kit orienta essa configuração.
 
@@ -268,19 +280,19 @@ kit orienta essa configuração.
 | Plugin | Versão | Claude Code | Demais agentes | Comandos | Subagentes | Hooks |
 |---|---|---|---|---|---|---|
 | **dev-flow** | `0.5.0` | sim | parcial (Codex/Cursor) | 11 | 4 | sim |
-| **equipping-stack-docs** | `1.0.0` | sim | sim | — | — | — |
-| **legacy-docs** | `4.3.0` | sim | sim | 1 | — | — |
-| **qa-handoff** | `1.32.0` | sim | sim | 7 | — | — |
-| **legacy-killer** | `0.4.0` | sim | sim | 9 | 9 | — |
-| **neverstop** | `0.2.0` | sim | — | 2 | — | sim |
-| **estimativa-killer** | `0.2.0` | sim | sim | 1 | — | — |
-| **discovery-sync** | `0.15.0` | sim | sim | 10 | 5 | — |
-| **flow-genesis-studio** | `1.1.0` | sim | sim | 7 | 8 | — |
-| **screendiscovery** | `0.3.0` | sim | sim | 3 | — | — |
+| **equipping-stack-docs** | `1.0.5` | sim | sim | — | — | — |
+| **legacy-docs** | `4.4.1` | sim | sim | 1 | — | — |
+| **qa-handoff** | `1.38.0` | sim | sim | 7 | — | — |
+| **legacy-killer** | `0.5.0` | sim | sim | 9 | 9 | — |
+| **neverstop** | `0.2.2` | sim | — | 2 | — | sim |
+| **estimativa-killer** | `0.2.5` | sim | sim | 1 | — | — |
+| **discovery-sync** | `0.15.4` | sim | sim | 10 | 5 | — |
+| **flow-genesis-studio** | `1.3.0` | sim | sim | 7 | 9 | — |
+| **screendiscovery** | `0.3.5` | sim | sim | 3 | — | — |
 | **drive-transcriber-mcp** | `0.1.1` | sim | — | — | — | — |
-| **qa-intake** | `0.3.0` | sim | sim | 5 | 1 | — |
-| **selfrepair** | `0.2.0` | sim | sim | 6 | 3 | — |
-| **go-live** | `0.1.0` | sim | sim | 8 | 3 | — |
+| **qa-intake** | `0.3.3` | sim | sim | 5 | 1 | — |
+| **selfrepair** | `0.2.3` | sim | sim | 6 | 3 | — |
+| **go-live** | `0.2.4` | sim | sim | 9 | 3 | — |
 
 **Demais agentes = sim** significa que o repositório traz os manifestos de Codex, Cursor, Kimi,
 Gemini e pi, todos apontando para a mesma skill — sem cópia duplicada.
@@ -297,11 +309,15 @@ nossos, porque **os nomes colidem em silêncio**:
 |---|---|
 | `status` | discovery-sync, selfrepair, flow-genesis-studio, screendiscovery, legacy-killer, qa-intake, go-live |
 | `start` | discovery-sync, selfrepair, flow-genesis-studio, legacy-killer, qa-intake, go-live |
+| `plan` | dev-flow, legacy-killer, go-live |
+| `review` | dev-flow, discovery-sync, flow-genesis-studio |
+| `assess` | legacy-killer, go-live |
+| `document` | legacy-docs, legacy-killer |
 | `ingest` | discovery-sync, qa-intake |
-| `review` | discovery-sync, flow-genesis-studio |
+| `ship` | dev-flow, selfrepair |
 | `verify` | flow-genesis-studio, legacy-killer |
 
-Medido com os 9 plugins instalados: **58 componentes viram 46 nomes únicos — 12 ficam
+Medido com 9 plugins instalados, antes da entrada do dev-flow: **58 componentes viram 46 nomes únicos — 12 ficam
 inacessíveis**, sem aviso. Quem pedir "status" recebe o do discovery-sync, qualquer que fosse a
 intenção.
 
@@ -324,8 +340,8 @@ Os dois com **—**:
 ```
 
 > **Rode o primeiro comando manualmente.** O auto-update em background desabilita os credential
-> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 12 dos 13
-> plugins. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
+> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 14 dos 15
+> itens da loja. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
 > registre o marketplace por SSH, com a chave carregada no `ssh-agent`.
 
 O cache de plugin é indexado pela string de `version`. Todo release muda a versão nos manifests;
@@ -346,10 +362,13 @@ sem isso a atualização não chega em quem já instalou.
    {
      "name": "nome-do-plugin",
      "description": "uma linha sobre o que faz e quando usar",
-     "source": { "source": "github", "repo": "Framework-System/nome-do-plugin" },
+     "source": { "source": "url", "url": "https://github.com/Framework-System/nome-do-plugin.git" },
      "author": { "name": "Seu Nome", "email": "voce@frwk.com.br" }
    }
    ```
+
+   Use `source: "url"` com HTTPS, **não** `source: "github"` — este último faz o Claude Code clonar
+   apenas por SSH, quebrando a instalação de quem não tem chave SSH na máquina.
 
 4. Dê acesso ao time `ia-frwk-champions` (push) e `symbio-ai` (pull) no repositório novo — a org usa
    `base permission = none`, então sem time atribuído ninguém consegue instalar.
@@ -359,7 +378,7 @@ sem isso a atualização não chega em quem já instalou.
 ## Acesso
 
 Este repositório da loja e o `equipping-stack-docs` são **públicos** — o catálogo, com o nome e a
-descrição de todos os plugins, é legível por qualquer pessoa. Os outros 11 repositórios são
+descrição de todos os plugins, é legível por qualquer pessoa. Os outros 14 repositórios são
 **privados**, e o acesso a eles vem por time, não por pertencer à org:
 
 | Time | Permissão |
