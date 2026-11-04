@@ -279,7 +279,7 @@ kit orienta essa configuração.
 
 | Plugin | Versão | Claude Code | Demais agentes | Comandos | Subagentes | Hooks |
 |---|---|---|---|---|---|---|
-| **dev-flow** | `0.5.0` | sim | parcial (Codex/Cursor) | 11 | 4 | sim |
+| **dev-flow** | `0.6.0` | sim | parcial (Codex/Cursor) | 11 | 4 | sim |
 | **equipping-stack-docs** | `1.0.5` | sim | sim | — | — | — |
 | **legacy-docs** | `4.4.1` | sim | sim | 1 | — | — |
 | **qa-handoff** | `1.38.0` | sim | sim | 7 | — | — |
@@ -287,7 +287,7 @@ kit orienta essa configuração.
 | **neverstop** | `0.2.2` | sim | — | 2 | — | sim |
 | **estimativa-killer** | `0.2.5` | sim | sim | 1 | — | — |
 | **discovery-sync** | `0.15.4` | sim | sim | 10 | 5 | — |
-| **flow-genesis-studio** | `1.3.0` | sim | sim | 7 | 9 | — |
+| **flow-genesis-studio** | `1.3.1` | sim | sim | 7 | 9 | — |
 | **screendiscovery** | `0.3.5` | sim | sim | 3 | — | — |
 | **drive-transcriber-mcp** | `0.1.1` | sim | — | — | — | — |
 | **qa-intake** | `0.3.3` | sim | sim | 5 | 1 | — |
