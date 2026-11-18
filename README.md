@@ -36,7 +36,7 @@ você descreve o que quer e o agente carrega a skill pela descrição dela.
 A instalação muda conforme o agente. Se você usa mais de um, instale em cada um separadamente.
 
 > **A maioria dos repositórios é privada.** Este repositório da loja e o `equipping-stack-docs` são
-> públicos; os outros 14 itens são privados. Qualquer comando que baixe um plugin privado exige que
+> públicos; os outros 16 itens são privados. Qualquer comando que baixe um plugin privado exige que
 > você já esteja autenticado no GitHub (`gh auth login`, credential helper ou chave SSH no
 > `ssh-agent`). Sem isso o download falha com erro de autenticação, não de "não encontrado".
 
@@ -67,6 +67,8 @@ Entrega completa: skills, comandos, subagentes e hooks.
   /plugin install qa-intake@frwk-plugins
   /plugin install selfrepair@frwk-plugins
   /plugin install go-live@frwk-plugins
+  /plugin install symbio-shield@frwk-plugins
+  /plugin install story-gauge@frwk-plugins
   ```
 
 - E os kits de skills (ver [Skills disponíveis](#skills-disponiveis)):
@@ -235,6 +237,8 @@ As 10 skills também passam no validador de referência da especificação
 | **qa-intake** | Transforma gravações narradas de fluxo (vídeo + transcrição) em casos de teste estruturados, com portão determinístico que impede o modelo de fabricar passos: todo passo cita um timestamp da transcrição e a citação é conferida contra o texto bruto (`/qa-intake:start`) | Restrito | [Framework-System/qa-intake](https://github.com/Framework-System/qa-intake) |
 | **selfrepair** | Auto-reparador de bugs de produção: descobre bugs na telemetria que o projeto já usa (Sentry, Datadog, Grafana/Loki, Application Insights via MCP; arquivo de log, saída de container e painel web como fallback), agrupa cross-fonte e ranqueia com decomposição explícita do score, investiga cada bug em paralelo, **conversa com você na busca e na correção**, corrige com teste de regressão vermelho antes do fix e verificação adversarial, e registra em branch dedicada com commits atômicos e PR sob confirmação por degrau (`/selfrepair:start`) | Restrito | [Framework-System/selfrepair](https://github.com/Framework-System/selfrepair) |
 | **go-live** | Assistente de publicação ponta a ponta e neutro de provedor: compara 2–3 ambientes candidatos entre provedores (PaaS, serverless, containers, Kubernetes) com critérios declarados, estima o custo com preço em tempo real e premissas explícitas, executa o deploy pelo MCP/CLI do provedor escolhido em degraus confirmados com runbook de rollback, gradua para CI/CD com OIDC e liga o monitoramento escalonado pelo porte (`/go-live:start`) | Restrito | [Framework-System/go-live](https://github.com/Framework-System/go-live) |
+| **symbio-shield** | Ciclo completo de segurança para código entregue: detecta com Semgrep, osv-scanner e gitleaks usando as listas OWASP (web, API, mobile, LLM, agentic, MCP), valida cada achado, corrige com aprovação do dev ou da IA, retesta, registra as decisões `DEC-*` e gera relatório PDF com evidência rastreável até `arquivo:linha`, decisão, reteste e commit. Os portões são código determinístico: o modelo que propõe não aprova (`/symbio-shield:start`) | Restrito | [Framework-System/symbio-shield](https://github.com/Framework-System/symbio-shield) |
+| **story-gauge** | Avalia os cards de um board (Azure DevOps, Jira ou backlog do discovery-sync): nota INVEST por letra com citação do card, granularidade medida contra uma régua calibrada no próprio board, matriz complexidade × incerteza, outliers com sugestão de quebra, spike ou fusão, e o veredito de se o backlog pode ser previsto por contagem de cards. Só escreve no board com confirmação explícita (`/story-gauge:start`) | Restrito | [Framework-System/story-gauge](https://github.com/Framework-System/story-gauge) |
 
 **Público** = qualquer pessoa instala. **Restrito** = o repositório do plugin é privado; a instalação exige acesso ao repositório e git autenticado no GitHub (`gh auth login` ou chave SSH). Sem acesso, o clone falha na instalação — o restante da loja continua funcionando normalmente.
 
@@ -293,6 +297,8 @@ kit orienta essa configuração.
 | **qa-intake** | `0.3.3` | sim | sim | 5 | 1 | — |
 | **selfrepair** | `0.2.3` | sim | sim | 6 | 3 | — |
 | **go-live** | `0.2.4` | sim | sim | 9 | 3 | — |
+| **symbio-shield** | `0.1.0` | sim | — | 8 | 3 | — |
+| **story-gauge** | `0.1.0` | sim | sim | 7 | 4 | — |
 
 **Demais agentes = sim** significa que o repositório traz os manifestos de Codex, Cursor, Kimi,
 Gemini e pi, todos apontando para a mesma skill — sem cópia duplicada.
@@ -325,12 +331,15 @@ No Claude Code isso não acontece: lá cada comando é prefixado pelo plugin (`/
 `/qa-intake:status` coexistem). **Se for usar o Copilot CLI, instale só os plugins que você
 realmente precisa.**
 
-Os dois com **—**:
+Os com **—**:
 
 - **drive-transcriber-mcp** — é um servidor MCP, não uma skill. MCP é padrão aberto: **já funciona**
   em Codex, Copilot, Cursor e Gemini, bastando registrar o servidor.
 - **neverstop** — o valor dele está inteiro nos hooks `PreCompact`/`SessionStart`/`Stop` do Claude
   Code, que não têm equivalente em outros agentes. Portar entregaria uma casca.
+- **symbio-shield** — o repositório ainda só traz o manifesto do Claude Code. A skill segue o
+  formato Agent Skills e pode ser copiada à mão para outro agente; os manifestos dos demais
+  harnesses ainda não foram feitos.
 
 ## Atualizando
 
@@ -340,7 +349,7 @@ Os dois com **—**:
 ```
 
 > **Rode o primeiro comando manualmente.** O auto-update em background desabilita os credential
-> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 14 dos 15
+> helpers do git, então **não autentica em repositório privado por HTTPS** — o caso de 16 dos 17
 > itens da loja. Sem o `marketplace update` manual você continua vendo o catálogo antigo. Alternativa:
 > registre o marketplace por SSH, com a chave carregada no `ssh-agent`.
 
@@ -378,7 +387,7 @@ sem isso a atualização não chega em quem já instalou.
 ## Acesso
 
 Este repositório da loja e o `equipping-stack-docs` são **públicos** — o catálogo, com o nome e a
-descrição de todos os plugins, é legível por qualquer pessoa. Os outros 14 repositórios são
+descrição de todos os plugins, é legível por qualquer pessoa. Os outros 16 repositórios são
 **privados**, e o acesso a eles vem por time, não por pertencer à org:
 
 | Time | Permissão |

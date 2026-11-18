@@ -175,6 +175,30 @@
       }
     },
     {
+      "name": "symbio-shield",
+      "description": "Ciclo completo de segurança para código entregue: detecta (Semgrep, osv-scanner, gitleaks) com listas OWASP, valida, corrige com aprovação do dev ou da IA, retesta, registra decisões e gera relatório com evidência apresentável ao cliente.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/symbio-shield.git"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
+    },
+    {
+      "name": "story-gauge",
+      "description": "Avalia os cards de um board (Azure DevOps, Jira ou backlog do discovery-sync): nota INVEST por letra com citação do card, granularidade medida contra uma régua calibrada no próprio board, matriz complexidade × incerteza, outliers com sugestão de quebra, spike ou fusão, e o veredito de se o backlog pode ser previsto por contagem de cards. Só escreve no board com confirmação explícita.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Framework-System/story-gauge.git"
+      },
+      "author": {
+        "name": "Framework System",
+        "email": "rafaelbonaldi@frwk.com.br"
+      }
+    },
+    {
       "name": "symbio-devkit",
       "description": "Método e papéis da Symbio para o ciclo inteiro de produto (portfólio, gestão, produto, UX, arquitetura, liderança técnica, desenvolvimento, dados, QA, segurança, observabilidade, release e sincronia com o tracker), agnóstico de cliente e de stack: arquitetura, padrões e nomenclatura saem da análise dos repositórios do cliente e da documentação oficial da stack consultada no momento do uso, nunca de um padrão fixo. Gates com aprovação humana vinculada ao conteúdo, estado retomável em disco e orquestração dos plugins irmãos da frwk-plugins.",
       "source": {
